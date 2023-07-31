@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GithubUsers } from '../../types';
-import { GITHUB_API } from '../../api/gitHub';
+import { fetchData } from '../../utils/fetchData';
 
 import './UsersList.css';
 
@@ -18,17 +18,19 @@ export const UsersList: FC<Props> = ({ users }) => {
   });
 
   useEffect(() => {
-    const arrFetchUsers = arrLogin?.map((login) =>
-      fetch(`https://api.github.com/users/${login}`, GITHUB_API).then((response) => response.json())
-    );
+    async function fetchUsersData() {
+      const arrFetchUsers = arrLogin?.map((login) => fetchData(`https://api.github.com/users/${login}`));
 
-    if (arrFetchUsers)
-      Promise.all(arrFetchUsers).then((responses) => {
+      if (arrFetchUsers?.length) {
+        const responses = await Promise.all(arrFetchUsers);
         const arrCompany = responses.map((item) => item.company);
         const arrReposNumber = responses.map((item) => item.public_repos);
         setCompany(arrCompany);
         setRepos(arrReposNumber);
-      });
+      }
+    }
+
+    fetchUsersData();
   }, [users]);
 
   const pluralization = (number: number, txt: any[], cases = [2, 0, 1, 1, 1, 2]) =>

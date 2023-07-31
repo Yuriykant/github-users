@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Header } from '../Header/Header';
 import { UserProfilePage } from '../UserProfilePage/UserProfilePage';
@@ -14,7 +14,7 @@ export const App: FC = () => {
           <Route index element={<UsersPage />} />
           <Route path="search" element={<UsersSearchPage />} />
           <Route path="users/:login" element={<UserProfilePage />} />
-          <Route path="*" element={<UsersPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </>

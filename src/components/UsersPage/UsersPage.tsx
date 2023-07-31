@@ -1,17 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { UsersList } from '../UsersList/UsersList';
 import { GithubUsers } from '../../types';
-import { GITHUB_API } from '../../api/gitHub';
+import { fetchData } from '../../utils/fetchData';
 
 export const UsersPage: FC = () => {
   const [users, setUsers] = useState<GithubUsers[] | null>(null);
 
-  React.useEffect(() => {
-    fetch(' https://api.github.com/users', GITHUB_API)
-      .then((response) => response.json())
-      .then((response) => {
+  useEffect(() => {
+    const fetchUsersData = async () => {
+      try {
+        const response = await fetchData('https://api.github.com/users');
         setUsers(response);
-      });
+      } catch (error) {
+        // Обработка ошибки, если не удалось получить данные
+      }
+    };
+    fetchUsersData();
   }, []);
 
   return (
