@@ -32,4 +32,4 @@
 
 ## Дизайн
 
-[Дизайн проекта] (https://www.figma.com/file/3UYNEY25JumdkCOmH0MdEP/Karpov-GitHub-Users?type=design&node-id=0-1&mode=design)
+[Дизайн проекта](https://www.figma.com/file/3UYNEY25JumdkCOmH0MdEP/Karpov-GitHub-Users?type=design&node-id=0-1&mode=design)
