@@ -25,11 +25,6 @@
 - `/search?query=:id` — поиск пользователя
 - `/whatever` — при других страницах редиректить на "/"
 
-## Настройка GitLab CI
-
-- Настройте GitLab CI для проверки качества кода.
-- При пуше в ветку "main" должен выполняться CI-пайплайн.
-
 ## Дизайн
 
 [Дизайн проекта](https://www.figma.com/file/3UYNEY25JumdkCOmH0MdEP/Karpov-GitHub-Users?type=design&node-id=0-1&mode=design)
