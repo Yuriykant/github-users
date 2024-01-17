@@ -1,10 +1,6 @@
-import { GITHUB_API_TOKEN } from '../constants/env';
-
-const TOKEN = GITHUB_API_TOKEN;
-
 export const GITHUB_API = {
   headers: {
     Accept: 'application/json',
-    Authorization: `Bearer ${TOKEN}`,
+    Authorization: `Bearer ${'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'}`,
   },
 };
